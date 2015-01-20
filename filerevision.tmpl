@@ -47,7 +47,7 @@
 			<a class="latest" href="{url}file/tip/{file|urlescape}{sessionvars%urlparameter}">Go to Latest</a>
 		</p>
 		<h3>{repo|escape}/{file|escape}</h3>
-		<p class="description">{desc|strip|escape|nonempty} {changesettag}</p>
+		<p class="description">{desc|websub|strip|nonempty} {changesettag}</p>
 
 		<div class="well">			
 			<div class="pull-right">
