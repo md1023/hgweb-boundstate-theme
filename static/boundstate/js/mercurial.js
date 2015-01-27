@@ -22,6 +22,12 @@ var colors = [
 	[ 1.0, 0.0, 1.0 ]
 ];
 
+function resizeIframe(obj) {
+    window.addEventListener(
+	'message', function(e) { document.getElementById('iframe').style.height = e.data + "px"; }, false);
+    obj.contentWindow.postMessage("get_size", "http://localhost");
+};
+
 function Graph() {
 	
 	this.canvas = document.getElementById('graph');
