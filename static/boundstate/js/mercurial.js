@@ -25,7 +25,7 @@ var colors = [
 function resizeIframe(obj) {
     window.addEventListener(
 	'message', function(e) { document.getElementById('iframe').style.height = e.data + "px"; }, false);
-    obj.contentWindow.postMessage("get_size", "http://localhost");
+    obj.contentWindow.postMessage("get_size", "http://192.168.200.83");
 };
 
 function Graph() {
