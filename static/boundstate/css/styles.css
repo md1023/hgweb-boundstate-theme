@@ -1441,9 +1441,7 @@ legend+.control-group {
 }
 
 .navbar {
-    background-color:#00ade7;
-    background-image:-moz-linear-gradient(center top, #00b5f1, #00a2d8);
-    background-repeat:repeat-x;
+    background-color:#333;
     border-bottom:1px solid #fff;
     border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #fff;
     height:40px
@@ -1474,6 +1472,7 @@ legend+.control-group {
     line-height:40px;
     padding:0 9px;
     text-decoration:none;
+    margin: 0 10px;
     text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25)
 }
 
@@ -1481,6 +1480,53 @@ legend+.control-group {
     background-color:rgba(0, 143, 190, 0.8);
     color:#fff;
     text-decoration:none
+}
+
+.navbar .nav > li .link {
+    height: 17px;
+    line-height: 17px;
+    font-weight: bold;
+    font-family: "Helvetica Neue",sans-serif !important;
+    color: #FFF;
+    background-color: #6DC26D;
+    padding: 1px 9px;
+    font-size: 14px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #F1B500;
+    margin: 11px 0px;
+}
+
+.navbar .nav > li .link.jenkins {
+    border-left: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.navbar .nav > li .link.jenkins:hover {
+    background-color: #1DC21D;
+}
+
+.navbar .nav > li .link.redmine {
+    border-radius: 0 !important;
+    background-color: #DB7676;
+}
+
+.navbar .nav > li .link.redmine:hover {
+    background-color: #DB3535;
+}
+
+.navbar .nav > li .link.mercurial {
+    background-color: #007BB7;
+}
+
+.navbar .nav > li .link.mercurial:hover {
+    background-color: #00B5F1;
+}
+
+.navbar .nav > li .link.mercurial {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .brand {
@@ -1492,8 +1538,8 @@ legend+.control-group {
     font-size:0;
     font-weight:bold;
     height:40px;
-    margin-right:9px;
-    padding-left:32px;
+    margin-right: 14px;
+    padding-left:40px;
     text-shadow:0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125)
 }
 
