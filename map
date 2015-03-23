@@ -2,6 +2,7 @@ default = 'shortlog'
 
 mimetype = 'text/html; charset={encoding}'
 header = header.tmpl
+menubar = menubar.tmpl
 footer = footer.tmpl
 search = search.tmpl
 
