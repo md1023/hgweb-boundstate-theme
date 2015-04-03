@@ -181,7 +181,10 @@ indexentry = '
     <td>{contact|obfuscate}</td>
     <td class="age">{lastchange|rfc822date}</td>
     <td class="downloads">{archives%indexarchiveentry}</td>
+    <td>{tip%briefentry}<span class="tag outdated">{outdated}</span></td>
+    <td>{current%briefentry}</td>
   </tr>\n'
+briefentry = brief.tmpl
 indexarchiveentry = '<a href="{url}archive/{node|short}{extension|urlescape}">{type|escape}</a>'
 index = index.tmpl
 archiveentry = '<a href="{url}archive/{node|short}{extension|urlescape}"><i class="icon-download"></i>{type|escape}</a>'
