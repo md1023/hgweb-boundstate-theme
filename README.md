@@ -1,6 +1,6 @@
 # BoundState Theme for HgWeb
 
-  A clean, modern theme for Mercurial's [hgweb](http://mercurial.selenic.com/wiki/HgWebDirStepByStep]) using the [Bootstrap](http://twitter.github.com/bootstrap/) CSS framework.
+  A clean, modern theme for Mercurial's [hgweb](http://mercurial.selenic.com/wiki/HgWebDirStepByStep]) using the [Bootstrap](http://twitter.github.com/bootstrap/) CSS framework. Extended with additional statuses for use with multiple repositories.
 
 ## Installation
 
@@ -17,6 +17,8 @@
     [web]
     style = boundstate
 
+  Theme needs `mercurial/hgweb/hgwebdir_mod.py` to be patched. Patch is included. It also uses `hgst.sh` from [olivetti/tools](https://github.com/md1023/olivetti/tree/master/tools) to display Jenkins jobs' statuses and dirty repositories.
+
 ## Screenshots
 
-![commits](https://dl.dropbox.com/u/4186242/hgweb-boundstate-theme.png)
+![commits](https://dl.dropboxusercontent.com/u/69495183/hgweb-boundstate-theme.png)

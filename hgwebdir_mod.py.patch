@@ -1,0 +1,80 @@
+--- hgwebdir_mod.py.orig	2015-04-06 12:20:10.386474036 +0300
++++ hgwebdir_mod.py	2015-04-06 12:18:31.431979032 +0300
+@@ -10,6 +10,11 @@
+ from mercurial.i18n import _
+ from mercurial import ui, hg, scmutil, util, templater
+ from mercurial import error, encoding
++
++# hack imports (simno)
++from mercurial import bundlerepo
++# end of hack
++
+ from common import ErrorResponse, get_mtime, staticfile, paritygen, ismember, \
+                    get_contact, HTTP_OK, HTTP_NOT_FOUND, HTTP_SERVER_ERROR
+ from hgweb_mod import hgweb, makebreadcrumb
+@@ -369,6 +374,40 @@
+ 
+                 seenrepos.add(name)
+ 
++                # > this mercurial is forked (simno)
++                ctx = r["tip"]
++                # shows newest state of repository
++                row["tip"] = [dict(
++                    rev = "%s:%s" % (ctx.rev(), ctx),
++                    branch = ctx.branch(),
++                    tags = ctx.tags(),
++                    bookmarks = ctx.bookmarks())]
++
++                # shows current state of repository if it's not newest one
++                row["current"] = [dict(tags="", bookmarks="")]
++                if r["tip"] != r["."]:
++                    ctx = r["."]
++                    row["current"][0].update(dict(
++                        rev = "%s:%s" % (ctx.rev(), ctx),
++                        branch = ctx.branch(),
++                        tags = ctx.tags(),
++                        bookmarks = ctx.bookmarks()))
++
++                # show available updates
++                opts = {'stat': None, 'git': None, 'force': None, 'no_merges': None,
++                        'graph': None, 'insecure': True, 'remotecmd': '', 'rev': [], 
++                        'style': '', 'bundle': '', 'subrepos': None, 'limit': '', 'ssh': '', 
++                        'branch': [], 'newest_first': None, 'bookmarks': False, 'patch': None, 'template': ''}
++                # dict(bundle="", force=None, branch=[])
++                source, branches = hg.parseurl(u.expandpath("default"), opts.get('branch'))
++                # doesn't work with bitbucket repositories
++                other = hg.peer(r, opts, source)
++                other, chlist, cleanupfn = bundlerepo.getremotechanges(u, r, other)
++                row["outdated"] = len(chlist) or ""
++                row["remote_url"] = source
++                cleanupfn()
++                # end of hack
++
+                 yield row
+ 
+         sortdefault = None, False
+@@ -399,6 +438,24 @@
+                             and "-" or "", column))
+                 for column in sortable]
+ 
++        # > this mercurial is forked (simno)
++        from os import getcwd
++        import subprocess
++
++        # demo file
++        file = open("/tmp/hgst.log", "w")
++        from random import randint
++        p = subprocess.Popen("whoami && id", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++        output = p.communicate()
++        file.write("Your mercurial is forked. Search \"hgst.sh\". %s, %s \"%s\"" % (getcwd(), randint(0,100), output))
++        file.close()
++
++        # hgst-iframe generator
++        p = subprocess.Popen(
++            "SEARCH_NAME='-name ibd3-*' /home/m-nikolaev/olivetti/tools/hgst.sh /home/m-nikolaev/work /var/www/html/hgst.html", shell=True)
++        p.wait()
++        # end of hack
++
+         self.refresh()
+         self.updatereqenv(req.env)
+ 

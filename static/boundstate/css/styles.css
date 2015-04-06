@@ -276,6 +276,10 @@ a.tag.branchhead:hover, a.tag.branchname:hover {
     background-color: #f1b500;
 }
 
+a.outdated:hover {
+    background-color: #ffd21d;
+}
+
 .outdated::before {
     content: "outdated ";
 }
