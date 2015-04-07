@@ -1,5 +1,5 @@
 --- hgwebdir_mod.py.orig	2015-04-06 12:20:10.386474036 +0300
-+++ hgwebdir_mod.py	2015-04-06 12:18:31.431979032 +0300
++++ hgwebdir_mod.py	2015-04-07 14:10:11.902056230 +0300
 @@ -10,6 +10,11 @@
  from mercurial.i18n import _
  from mercurial import ui, hg, scmutil, util, templater
@@ -12,7 +12,7 @@
  from common import ErrorResponse, get_mtime, staticfile, paritygen, ismember, \
                     get_contact, HTTP_OK, HTTP_NOT_FOUND, HTTP_SERVER_ERROR
  from hgweb_mod import hgweb, makebreadcrumb
-@@ -369,6 +374,40 @@
+@@ -369,6 +374,42 @@
  
                  seenrepos.add(name)
  
@@ -23,17 +23,19 @@
 +                    rev = "%s:%s" % (ctx.rev(), ctx),
 +                    branch = ctx.branch(),
 +                    tags = ctx.tags(),
-+                    bookmarks = ctx.bookmarks())]
++                    bookmarks = ctx.bookmarks(),
++                    description = "%s: %s" % (ctx.user(), ctx.description()))]
 +
 +                # shows current state of repository if it's not newest one
-+                row["current"] = [dict(tags="", bookmarks="")]
++                row["current"] = [dict(tags="", bookmarks="", description="")]
 +                if r["tip"] != r["."]:
 +                    ctx = r["."]
 +                    row["current"][0].update(dict(
 +                        rev = "%s:%s" % (ctx.rev(), ctx),
 +                        branch = ctx.branch(),
 +                        tags = ctx.tags(),
-+                        bookmarks = ctx.bookmarks()))
++                        bookmarks = ctx.bookmarks(),
++                        description = "%s: %s" % (ctx.user().strip(), ctx.description())))
 +
 +                # show available updates
 +                opts = {'stat': None, 'git': None, 'force': None, 'no_merges': None,
@@ -53,7 +55,7 @@
                  yield row
  
          sortdefault = None, False
-@@ -399,6 +438,24 @@
+@@ -399,6 +440,24 @@
                              and "-" or "", column))
                  for column in sortable]
  

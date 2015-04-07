@@ -261,7 +261,7 @@ em {
 }
 
 .revision:empty, .tag:empty {
-    display:none
+    display:none;
 }
 
 a.tag:hover {
@@ -273,7 +273,23 @@ a.tag.branchhead:hover, a.tag.branchname:hover {
 }
 
 .outdated {
+    display: inline-block;
     background-color: #f1b500;
+    line-height: 17px;
+    margin: 0 0 0 1px;
+}
+
+.revinfo > span {
+    float: left;
+    margin: 0 1px;
+    line-height: 17px;
+}
+
+.revinfo > span.description {
+    display: block;
+    float: none;
+    clear: both;
+    padding: 4px 0 0 0;
 }
 
 a.outdated:hover {
@@ -285,7 +301,9 @@ a.outdated:hover {
 }
 
 .redmine {
-    background-color:#db7676
+    display: inline-block;
+    line-height: 17px;
+    background-color:#db7676;
 }
 
 .redmine:hover {
@@ -1625,7 +1643,7 @@ table {
     line-height:18px;
     padding:8px;
     text-align:left;
-    vertical-align:top
+    vertical-align:middle;
 }
 
 .table th {

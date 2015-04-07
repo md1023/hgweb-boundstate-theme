@@ -178,12 +178,17 @@ indexentry = '
   <tr class="parity{parity}">
     <td><a href="{url}{sessionvars%urlparameter}">{name|escape}</a></td>
     <td>{description}</td>
-    <td>{contact|obfuscate}</td>
     <td class="age">{lastchange|rfc822date}</td>
     <td class="downloads">{archives%indexarchiveentry}</td>
-    <td>{tip%briefentry}<a href="{remote_url}"
-    			   class="tag outdated" title="View changes in remote repository">{outdated}</span></td>
-    <td>{current%briefentry}</td>
+    <td>
+	<div class="revinfo">
+        <a href='{remote_url}' class='tag outdated' title='View changes in remote repository'>{outdated}</a>
+	{tip%briefentry}
+    </td>
+    <td>
+	<div class="revinfo">
+	{current%briefentry}
+    </td>
   </tr>\n'
 
 briefentry = brief.tmpl
