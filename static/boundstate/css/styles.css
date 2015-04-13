@@ -252,6 +252,12 @@ em {
     white-space:nowrap
 }
 
+ul#graphnodes .tag {
+    float: right;
+    line-height: 17px;
+    margin: 3px 3px 0 2px;
+}
+
 .tag {
     background-color:#888
 }
@@ -316,6 +322,22 @@ a.redmine {
 
 a.redmine:hover {
     text-decoration:none
+}
+
+.head {
+    background-image: linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
+    background-image: -o-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
+    background-image: -moz-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
+    background-image: -webkit-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
+    background-image: -ms-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
+}
+
+.head:hover {
+    background-image: linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
+    background-image: -o-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
+    background-image: -moz-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
+    background-image: -webkit-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
+    background-image: -ms-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
 }
 
 .revision {
@@ -1896,7 +1918,8 @@ ul#graphnodes {
     padding:0;
     position:absolute;
     top:0;
-    z-index:10
+    z-index:10;
+    width: 100%;
 }
 
 ul#nodebgs {
@@ -1910,6 +1933,10 @@ ul#graphnodes li, ul#nodebgs li {
     height:39px
 }
 
+ul#nodebgs li:nth-child(2n+1) {
+    background-color: #f8f8f8;
+}
+
 ul#graphnodes li .info {
     color:#555;
     display:block;
@@ -1919,7 +1946,7 @@ ul#graphnodes li .info {
 }
 
 ul#graphnodes li {
-    overflow:hidden
+    margin-right: 25px;
 }
 
 .dropdown {
