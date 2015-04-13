@@ -249,13 +249,17 @@ em {
     padding:2px 4px;
     text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);
     vertical-align:baseline;
-    white-space:nowrap
+    white-space:nowrap;
 }
 
 ul#graphnodes .tag {
     float: right;
     line-height: 17px;
-    margin: 3px 3px 0 2px;
+    margin: 9.5px 2px 0 2px;
+}
+
+ul#graphnodes .tag:first-child {
+    margin-right: 3px;
 }
 
 .tag {
@@ -282,20 +286,19 @@ a.tag.branchhead:hover, a.tag.branchname:hover {
     display: inline-block;
     background-color: #f1b500;
     line-height: 17px;
-    margin: 0 0 0 1px;
+    margin: 2px 0 0 2px;
 }
 
 .revinfo > span {
     float: left;
-    margin: 0 1px;
     line-height: 17px;
+    margin: 1px 2px;
 }
 
 .revinfo > span.description {
     display: block;
     float: none;
     clear: both;
-    padding: 4px 0 0 0;
 }
 
 a.outdated:hover {
