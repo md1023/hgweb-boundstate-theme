@@ -182,12 +182,11 @@ indexentry = '
     <td class="downloads">{archives%indexarchiveentry}</td>
     <td>
 	<div class="revinfo">
-        <a href='{remote_url}' class='tag outdated' title='View changes in remote repository'>{outdated}</a>
-	{tip%briefentry}
+	{default%briefentry}
     </td>
     <td>
 	<div class="revinfo">
-	{current%briefentry}
+	{tip%briefentry}
     </td>
   </tr>\n'
 

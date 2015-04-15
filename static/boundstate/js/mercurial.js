@@ -228,10 +228,16 @@ process_dates = (function(document, RegExp, Math, isNaN, Date, _false, _true){
 		var nodes = document.getElementsByTagName('*');
 		var ageclass = new RegExp('\\bage\\b');
 		var dateclass = new RegExp('\\bdate\\b');
+	        var nodedate = [];
+	        var agenodes = [];
 		for (var i=0; i<nodes.length; ++i){
 			var node = nodes[i];
 			var classes = node.className;
 			if (ageclass.test(classes)){
+			        var once = new Date(node.textContent);
+			        var now = new Date();
+			        nodedate.push(once / now);
+			        agenodes.push(i);
 				var agevalue = age(node.textContent);
 				if (dateclass.test(classes)){
 					// We want both: date + (age)
@@ -241,6 +247,18 @@ process_dates = (function(document, RegExp, Math, isNaN, Date, _false, _true){
 				}
 			}
 		}
+	        var farthestdate = Math.min.apply(null, nodedate);
+	        nodedate = nodedate.map(function(i){
+		    return i - farthestdate;
+		});
+	        var maxtimedelta = Math.max.apply(null, nodedate);
+	        for (var i=0; i<nodedate.length; ++i) {
+		    opacity = nodedate[i] / maxtimedelta;
+		    if (opacity < 0.1)
+			opacity = 0.1;
+		    nodes[agenodes[i]].parentNode.setAttribute(
+			"style", "opacity: " + opacity + ";")
+		};
 	}
 })(document, RegExp, Math, isNaN, Date, false, true)
 
