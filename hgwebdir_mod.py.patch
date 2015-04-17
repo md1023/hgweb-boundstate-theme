@@ -1,5 +1,5 @@
 --- hgwebdir_mod.py.orig	2014-01-02 07:46:39.000000000 +0400
-+++ hgwebdir_mod.py	2015-04-16 12:04:05.539167383 +0300
++++ hgwebdir_mod.py	2015-04-17 10:23:29.284688125 +0300
 @@ -10,6 +10,11 @@
  from mercurial.i18n import _
  from mercurial import ui, hg, scmutil, util, templater
@@ -12,7 +12,7 @@
  from common import ErrorResponse, get_mtime, staticfile, paritygen, ismember, \
                     get_contact, HTTP_OK, HTTP_NOT_FOUND, HTTP_SERVER_ERROR
  from hgweb_mod import hgweb, makebreadcrumb
-@@ -368,6 +373,39 @@
+@@ -368,6 +373,40 @@
                             archives=archivelist(u, "tip", url))
  
                  seenrepos.add(name)
@@ -22,7 +22,10 @@
 +                    rev = "%s:%s" % (ctx.rev(), ctx),
 +                    branch = ctx.branch(),
 +                    tags = ctx.tags(),
-+                    bookmarks = ctx.bookmarks(),
++                    # append "/default" to bookmarks merged with default branch
++                    bookmarks = [dict(name=b+"/default") if ctx.ancestor(r["default"]) == r["default"] \
++                                 else dict(name=b) \
++                                 for b in ctx.bookmarks()],
 +                    description = "%s: %s" % (ctx.user().strip(), ctx.description()))
 +
 +                # shows newest state of repository
@@ -33,13 +36,11 @@
 +                if r["tip"] != r["."]:
 +                    row["current"][0].update(revinfo(r["."]))
 +
-+
 +                # # show available updates
 +                opts = {'stat': None, 'git': None, 'force': None, 'no_merges': None,
 +                        'graph': None, 'insecure': True, 'remotecmd': '', 'rev': [], 
 +                        'style': '', 'bundle': '', 'subrepos': None, 'limit': '', 'ssh': '', 
 +                        'branch': [], 'newest_first': None, 'bookmarks': False, 'patch': None, 'template': ''}
-+
 +                source, branches = hg.parseurl(u.expandpath("default"), opts.get('branch'))
 +                # doesn't work with bitbucket repositories
 +                other = hg.peer(r, opts, source)
@@ -52,7 +53,7 @@
                  yield row
  
          sortdefault = None, False
-@@ -398,6 +436,14 @@
+@@ -398,6 +437,14 @@
                              and "-" or "", column))
                  for column in sortable]
  
