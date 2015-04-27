@@ -69,10 +69,14 @@ fileline = '
 filelogentry = filelogentry.tmpl
 
 annotateline = '
-  <tr class="parity{parity}">
-    <td class="annotate">
+  <tr class="parity{parity} annotate">
+    <td>
       <a href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}#{targetline}"
-         title="{node|short}: {desc|escape|firstline}">{author|user}@{rev}</a>
+         title="{node|short}: {desc|escape|firstline}" class="revision">{rev}:{node|short}</a>
+    </td>
+    <td>
+      <a href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}#{targetline}"
+         title="{node|short}: {desc|escape|firstline}">{author|person}</a>
     </td>
     <td class="source"><a href="#{lineid}" id="{lineid}">{linenumber}</a> {line|escape}</td>
   </tr>'
