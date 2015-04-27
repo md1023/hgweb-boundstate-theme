@@ -261,6 +261,10 @@ tr.annotate td:first-child {
     width: 120px;
 }
 
+tr.annotate td:nth-child(2) {
+    white-space: nowrap;
+}
+
 ul#graphnodes .tag {
     float: right;
     line-height: 17px;
