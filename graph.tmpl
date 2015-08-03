@@ -82,17 +82,18 @@
 
 		graph.edge = function(x0, y0, x1, y1, color) \{
 
-			this.setColor(color, 0.0, 0.65);
+			this.setColor(color, 0.0, 0.85);
 			this.ctx.beginPath();
 			this.ctx.moveTo(x0, y0);
-			this.ctx.lineTo(x1, y1);
+			this.ctx.bezierCurveTo(x0, y0+20, x1, y0+20, x1, y1);
+			this.ctx.lineWidth = 1.5;
 			this.ctx.stroke();
 
 		}
 
 		var revlink = '<li style="_STYLE"><span class="desc">';
 		revlink += '<a href="{url}rev/_NODEID{sessionvars%urlparameter}" title="_NODEID">_DESC</a>';
-		revlink += '</span>_TAGS<span class="info">_DATE, by _USER</span></li>';
+		revlink += '</span>_TAGS_ISSUES<span class="info">_DATE, by _USER</span></li>';
 
 		graph.vertex = function(x, y, color, parity, cur) \{
 
@@ -111,6 +112,14 @@
 			item = item.replace(/_DESC/, cur[3]);
 			item = item.replace(/_USER/, cur[4]);
 			item = item.replace(/_DATE/, cur[5]);
+
+            var issues = cur[3].match(/#[0-9]\{1,5}/g) || [];
+            var href = '<a class="redmine" href="http://192.168.200.69:3000/issues/_ISSUE">#_ISSUE</a>';
+            var issues_links = "";
+            issues.forEach(function(item) \{
+                issues_links += href.replace(/_ISSUE/g, item.slice(1));
+            });
+            item = item.replace(/_ISSUES/, issues_links);
 
 			var tagspan = '';
 			if (cur[7].length || cur[8].length || (cur[6][0] != 'default' || cur[6][1])) \{
