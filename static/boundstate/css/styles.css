@@ -265,7 +265,13 @@ tr.annotate td:nth-child(2) {
     white-space: nowrap;
 }
 
-ul#graphnodes .tag {
+ul#graphnodes .revision {
+    width: 125px;
+}
+
+ul#graphnodes .tag,
+ul#graphnodes .redmine,
+ul#graphnodes .revision {
     float: right;
     line-height: 17px;
     margin: 9.5px 2px 0 2px;

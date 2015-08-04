@@ -18,7 +18,11 @@
     style = boundstate
 
   Theme needs `mercurial/hgweb/hgwebdir_mod.py` to be patched. Patch is included. It also uses `hgst.sh` from [olivetti/tools](https://github.com/md1023/olivetti/tree/master/tools) to display Jenkins jobs' statuses and dirty repositories.
+  
+  One more patch `mercurial/hgweb/webcommands.py` adds revision numbers to graph page.
 
 ## Screenshots
 
 ![commits](https://dl.dropboxusercontent.com/u/69495183/hgweb-boundstate-theme.png)
+
+![commits](https://dl.dropboxusercontent.com/u/69495183/hgweb-boundstate-graph.png)

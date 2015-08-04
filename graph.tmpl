@@ -93,7 +93,7 @@
 
 		var revlink = '<li style="_STYLE"><span class="desc">';
 		revlink += '<a href="{url}rev/_NODEID{sessionvars%urlparameter}" title="_NODEID">_DESC</a>';
-		revlink += '</span>_TAGS_ISSUES<span class="info">_DATE, by _USER</span></li>';
+		revlink += '</span>_REV_TAGS_ISSUES<span class="info">_DATE, by _USER</span></li>';
 
 		graph.vertex = function(x, y, color, parity, cur) \{
 
@@ -112,6 +112,7 @@
 			item = item.replace(/_DESC/, cur[3]);
 			item = item.replace(/_USER/, cur[4]);
 			item = item.replace(/_DATE/, cur[5]);
+			item = item.replace(/_REV/, '<span class="revision">' + cur[9] + ':' + cur[0] + '</span>');
 
             var issues = cur[3].match(/#[0-9]\{1,5}/g) || [];
             var href = '<a class="redmine" href="http://192.168.200.69:3000/issues/_ISSUE">#_ISSUE</a>';
