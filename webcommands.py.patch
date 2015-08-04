@@ -1,0 +1,11 @@
+--- webcommands.py.orig	2015-08-04 12:15:43.521954236 +0300
++++ webcommands.py	2015-08-04 12:16:20.982608276 +0300
+@@ -1016,7 +1016,7 @@
+             if usetuples:
+                 data.append((node, vtx, edges, desc, user, age, branch,
+                              [cgi.escape(x) for x in ctx.tags()],
+-                             [cgi.escape(x) for x in ctx.bookmarks()]))
++                             [cgi.escape(x) for x in ctx.bookmarks()], ctx.rev()))
+             else:
+                 edgedata = [dict(col=edge[0], nextcol=edge[1],
+                                  color=(edge[2] - 1) % 6 + 1,
