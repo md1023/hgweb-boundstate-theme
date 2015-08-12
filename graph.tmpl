@@ -112,7 +112,7 @@
 			item = item.replace(/_DESC/, cur[3]);
 			item = item.replace(/_USER/, cur[4]);
 			item = item.replace(/_DATE/, cur[5]);
-			item = item.replace(/_REV/, '<span class="revision">' + cur[9] + ':' + cur[0] + '</span>');
+			item = item.replace(/_REV/, '<a href="' + window.location.href.split("/graph/")[0] + '/file/' + cur[0] + '" class="revision">' + cur[9] + ':' + cur[0] + '</span>');
 
             var issues = cur[3].match(/#[0-9]\{1,5}/g) || [];
             var href = '<a class="redmine" href="http://192.168.200.69:3000/issues/_ISSUE">#_ISSUE</a>';
