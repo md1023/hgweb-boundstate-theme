@@ -252,6 +252,16 @@ em {
     white-space:nowrap;
 }
 
+.logtags {
+    width: 135px;
+    float: right;
+    margin: 11px 0 0 0;
+}
+
+ul#graphnodes .logtags .revision {
+    float: none;
+}
+
 .annotate .revision {
     padding: 1px 2px 0 2px;
     font-size: 11px;
@@ -263,10 +273,6 @@ tr.annotate td:first-child {
 
 tr.annotate td:nth-child(2) {
     white-space: nowrap;
-}
-
-ul#graphnodes .revision {
-    width: 125px;
 }
 
 ul#graphnodes .tag,
@@ -346,7 +352,7 @@ a.redmine:hover {
     text-decoration:none
 }
 
-.head {
+.branchhead {
     background-image: linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
     background-image: -o-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
     background-image: -moz-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
@@ -354,7 +360,7 @@ a.redmine:hover {
     background-image: -ms-linear-gradient(bottom, #bbb 90%, #00b5f1 10%);
 }
 
-.head:hover {
+.branchhead:hover {
     background-image: linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
     background-image: -o-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
     background-image: -moz-linear-gradient(bottom, #a2a2a2 90%, #00b5f1 10%);
@@ -1727,6 +1733,24 @@ table {
 
 .table .age, .table .author, .table .fileline .permissions {
     white-space:nowrap
+}
+
+.table th.age,
+.table th.author,
+.table th.description,
+.table td.age,
+.table td.author,
+.table td.description {
+    text-align: left;
+}
+
+.table th,
+.table td {
+    text-align: right;
+}
+
+.table td.description {
+    width: 60%;
 }
 
 .table .fileline .filename {
