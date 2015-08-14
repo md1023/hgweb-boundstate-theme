@@ -3,6 +3,6 @@
   <td class="author">{author|person}</td>
   <td class="description"><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{desc|strip|firstline|escape|nonempty}</a></td>
   <td>{desc|redmine}</td>
-  <td>{tags % '<span class="tag">{name|escape}</span> '}{bookmarks % '<span class="tag">{name|escape}</span> '}{inbranch%changelogbranchname}{branches%changelogbranchhead}</td>
-  <td><a class="revision" href="{url}file/{node|short}">{rev}:{node|short}</a></td>
+  <td class="column-logtags">{tags % '<span class="tag">{name|escape}</span> '}{bookmarks % '<span class="tag">{name|escape}</span> '}{inbranch%changelogbranchname}{branches%changelogbranchhead}</td>
+  <td class="column-logtags"><a class="revision" href="{url}file/{node|short}">{rev}:{node|short}</a></td>
  </tr>

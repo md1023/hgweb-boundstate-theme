@@ -1735,17 +1735,8 @@ table {
     white-space:nowrap
 }
 
-.table th.age,
-.table th.author,
-.table th.description,
-.table td.age,
-.table td.author,
-.table td.description {
-    text-align: left;
-}
-
-.table th,
-.table td {
+.table th.column-logtags,
+.table td.column-logtags {
     text-align: right;
 }
 
