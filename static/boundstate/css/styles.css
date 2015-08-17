@@ -314,7 +314,8 @@ a.tag.branchhead:hover, a.tag.branchname:hover {
     margin: 2px 0 0 2px;
 }
 
-.revinfo > span {
+.revinfo > span,
+.revinfo > a {
     float: left;
     line-height: 17px;
     margin: 1px 2px;
